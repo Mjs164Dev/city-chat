@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityChat Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>CityChat Assistant</h1>
+    <input type="text" id="queryInput" placeholder="Ask something..." />
+    <button id="submitButton">Submit</button>
+
+    <div id="responseContainer"></div>
+  </div>
+
+  <script>
+    document.getElementById('submitButton').addEventListener('click', async () => {
+      const query = document.getElementById('queryInput').value;
+      const responseContainer = document.getElementById('responseContainer');
+      responseContainer.innerHTML = 'Loading...';
+
+      const response = await fetch('/api/query', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt: query }),
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        responseContainer.innerHTML = 'Error: ' + data.error;
+      } else {
+        responseContainer.innerHTML = data.response;
+      }
+    });
+  </script>
+</body>
+</html>

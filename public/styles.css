@@ -8,21 +8,70 @@ body {
   margin: 0;
 }
 
-.container {
-  text-align: center;
+.chat-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-input {
-  width: 300px;
+#chat-window {
+  height: 400px;
+  border: 1px solid #ddd;
   padding: 10px;
+  overflow-y: auto;
   margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+#message {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 button {
-  padding: 10px 20px;
+  width: 15%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-#responseContainer {
-  margin-top: 20px;
+button:hover {
+  background-color: #45a049;
+}
+
+p {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+p strong {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* User Message Styling */
+p.you {
+  background-color: #e1ffc7;
+  align-self: flex-end;
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Assistant Message Styling */
+p.assistant {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+  text-align: left;
+  margin-right: auto;
 }
